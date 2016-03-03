@@ -11,6 +11,7 @@
 // Variable definitions
 int analogPin = 0; //this variable indicates the analog pin used by the MEMS microphone
 int val; //this variable will be defined as the automatic mapping of the 3.3volts using integers between 0 and 1023
+float toc;
 float volts; //this variable will be defined as the actual voltage (in mV) of the analog signal
 
 void setup() {
@@ -22,8 +23,13 @@ void setup() {
 void loop() {
 
   val = analogRead(analogPin); //read the analog output --automatically mapped to integers between 0 and 1023
-  volts = val * (5.0 / 1023.0); //here the program determines the real voltage of the signal
-  Serial.println(volts); //prints the voltage to the serial monitor
+  toc = millis();
+  volts = val * (3.3 / 1023.0); //here the program determines the real voltage of the signal
+
+  Serial.println(toc); //prints the voltage to the serial monitor
+  Serial.println(volts);
+
+  delay(500);
 
 } //End of void-loop
 
